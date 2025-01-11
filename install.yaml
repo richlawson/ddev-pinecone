@@ -94,22 +94,21 @@ post_install_actions:
   # - chmod +x ~/.ddev/commands/web/somecommand
   # - touch ${DDEV_APPROOT}/somefile.${GOOS}.${DDEV_WEBSERVER}
   # - perl -pi -e 's/oldstring/newstring/g' ${DDEV_APPROOT}/.ddev/docker-compose.pinecone.yaml
- - |
-   #ddev-nodisplay
-   curl -s "http://pinecone:5080/indexes" \
-     -H "Accept: application/json" \
-     -H "Content-Type: application/json" \
-     -d '{
-           "name": "example-index",
-           "dimension": 2,
-           "metric": "cosine",
-           "spec": {
-               "serverless": {
-                 "cloud": "aws",
-                 "region": "us-east-1"
-               }
-           }
-         }'
+  - >
+      curl -s "http://pinecone:5080/indexes"
+      -H "Accept: application/json"
+      -H "Content-Type: application/json"
+      -d '{
+            "name": "example-index",
+            "dimension": 2,
+            "metric": "cosine",
+            "spec": {
+                "serverless": {
+                  "cloud": "aws",
+                  "region": "us-east-1"
+                }
+            }
+          }'
 
 # Shell actions that can be done during removal of the add-on.
 # Files listed in project_files section will be automatically removed here if they contain #ddev-generated line.
