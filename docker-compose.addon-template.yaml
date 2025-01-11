@@ -1,8 +1,8 @@
 #ddev-generated
-# Simple template to demonstrate addon-template
+# Simple template to demonstrate pinecone
 services:
-  addon-template:
-    container_name: ddev-${DDEV_SITENAME}-addon-template
+  pinecone:
+    container_name: ddev-${DDEV_SITENAME}-pinecone
     image: busybox:stable
     command: tail -f /dev/null
     restart: "no"
