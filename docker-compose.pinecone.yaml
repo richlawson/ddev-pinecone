@@ -2,12 +2,16 @@
 #ddev-generated
 services:
   pinecone:
-    image: ghcr.io/pinecone-io/pinecone-local:latest
+    image: ghcr.io/pinecone-io/pinecone-index:latest
+    container_name: ddev-${DDEV_SITENAME}-index
     environment:
-      PORT: 5080
-      PINECONE_HOST: localhost
-    expose:
-      - "5080-6000:5080-6000"
+      PORT: 5081
+      INDEX_TYPE: serverless
+      VECTOR_TYPE: dense
+      DIMENSION: 2
+      METRIC: cosine
+    ports:
+      - "5081:5081"
     platform: linux/amd64
     # These labels ensure this service is discoverable by ddev.
     labels:
