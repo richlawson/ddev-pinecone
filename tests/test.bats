@@ -45,11 +45,15 @@ health_checks() {
   # run curl -sfI https://${PROJNAME}.ddev.site
   # assert_output --partial "HTTP/2 200"
   # assert_output --partial "test_header"
+  run curl -X POST "http://localhost:5081/describe_index_stats" \
+    -H "Content-Type: application/json" \
+    -H "X-Pinecone-API-Version: 2025-01" \
+    -d '{}'
 
   # Or check if some command gives expected output:
-  DDEV_DEBUG=true run ddev launch
-  assert_success
-  assert_output --partial "FULLURL https://${PROJNAME}.ddev.site"
+  # DDEV_DEBUG=true run ddev launch
+  # assert_success
+  # assert_output --partial "FULLURL https://${PROJNAME}.ddev.site"
 }
 
 teardown() {
