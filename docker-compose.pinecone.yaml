@@ -3,7 +3,7 @@
 services:
   pinecone:
     image: ghcr.io/pinecone-io/pinecone-index:latest
-    container_name: dense-index
+    container_name: ddev-${DDEV_SITENAME}-index
     environment:
       PORT: 5081
       INDEX_TYPE: serverless
