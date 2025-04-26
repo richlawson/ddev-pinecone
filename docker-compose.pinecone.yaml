@@ -24,8 +24,10 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-    healthcheck:
-      test: ["CMD-SHELL", "curl --fail -s localhost:5081/index/"]
+    external_links:
+      - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
+    #healthcheck:
+    #  test: ["CMD-SHELL", "curl --fail -s localhost:5081/index/"]
     volumes:
-    - ".:/mnt/ddev_config"
-    - "ddev-global-cache:/mnt/ddev-global-cache"
+      - ".:/mnt/ddev_config"
+      - "ddev-global-cache:/mnt/ddev-global-cache"
