@@ -46,10 +46,18 @@ health_checks() {
   # assert_output --partial "HTTP/2 200"
   # assert_output --partial "test_header"
 
-  # Or check if some command gives expected output:
-  DDEV_DEBUG=true run ddev launch
+  # Check that the index resturns its stats.
+  run curl -X POST "http://localhost:5081/describe_index_stats" \
+    -H "Content-Type: application/json" \
+    -H "X-Pinecone-API-Version: 2025-01" \
+    -d '{}'
   assert_success
-  assert_output --partial "FULLURL https://${PROJNAME}.ddev.site"
+  assert_output --partial "dense"
+
+  # Or check if some command gives expected output:
+  # DDEV_DEBUG=true run ddev launch
+  # assert_success
+  # assert_output --partial "FULLURL https://${PROJNAME}.ddev.site"
 }
 
 teardown() {
