@@ -52,6 +52,29 @@ health_checks() {
   assert_success
   assert_output --partial "indexes"
 
+  run curl -X POST "https://${PROJNAME}.ddev.site:5080/indexes" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-Pinecone-API-Version: 2025-01" \
+    -d '{
+            "name": "dense-index",
+            "vector_type": "dense",
+            "dimension": 2,
+            "metric": "cosine",
+            "spec": {
+                "serverless": {
+                    "cloud": "aws",
+                    "region": "us-east-1"
+                }
+            },
+            "tags": {
+                "environment": "development"
+            },
+            "deletion_protection": "disabled"
+        }'
+  assert_success
+  assert_output --partial "dense"
+
   # Or check if some command gives expected output:
   # DDEV_DEBUG=true run ddev launch
   # assert_success
