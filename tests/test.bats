@@ -50,7 +50,7 @@ health_checks() {
   run curl -i -X GET "https://${PROJNAME}.ddev.site:5080/indexes" \
     -H "X-Pinecone-API-Version: 2025-01" \
   assert_success
-  #assert_output --partial "dense"
+  assert_output --partial "indexes"
 
   # Or check if some command gives expected output:
   # DDEV_DEBUG=true run ddev launch
