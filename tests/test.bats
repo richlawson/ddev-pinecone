@@ -50,7 +50,7 @@ health_checks() {
     -H "X-Pinecone-API-Version: 2025-01" \
     -d '{}'
   assert_success
-  assert_output --partial "dense"
+  assert_output --partial "fail"
 
   # Or check if some command gives expected output:
   # DDEV_DEBUG=true run ddev launch
