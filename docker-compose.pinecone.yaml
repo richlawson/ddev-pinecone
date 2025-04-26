@@ -2,23 +2,19 @@
 #ddev-generated
 services:
   pinecone:
-    image: ghcr.io/pinecone-io/pinecone-index:latest
+    image: ghcr.io/pinecone-io/pinecone-local:latest
     container_name: ddev-${DDEV_SITENAME}-pinecone
     environment:
-      PORT: 5081
+      PORT: 5080
       PINECONE_HOST: $DDEV_HOSTNAME
-      INDEX_TYPE: serverless
-      VECTOR_TYPE: dense
-      DIMENSION: 2
-      METRIC: cosine
       # This defines the host name the service should be accessible from. This
       # will be sitename.ddev.site.
       VIRTUAL_HOST: $DDEV_HOSTNAME
-      HTTP_EXPOSE: 5081:5081
-      HTTPS_EXPOSE: 5081:5081
+      HTTP_EXPOSE: 5080-5090:5080-5090
+      HTTPS_EXPOSE: 5080-5090:5080-5090
     restart: "no"
     expose:
-      - "5081"
+      - "5080-5090"
     platform: linux/amd64
     # These labels ensure this service is discoverable by ddev.
     labels:

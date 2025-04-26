@@ -94,7 +94,6 @@ post_install_actions:
   # - chmod +x ~/.ddev/commands/web/somecommand
   # - touch ${DDEV_APPROOT}/somefile.${GOOS}.${DDEV_WEBSERVER}
   # - perl -pi -e 's/oldstring/newstring/g' ${DDEV_APPROOT}/.ddev/docker-compose.pinecone.yaml
-  #- curl -s "http://pinecone:5080/indexes"
 
 # Shell actions that can be done during removal of the add-on.
 # Files listed in project_files section will be automatically removed here if they contain #ddev-generated line.
