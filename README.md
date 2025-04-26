@@ -8,13 +8,13 @@ This repository allows you to quickly install [Pinecone](https://www.pinecone.io
 
 For DDEV v1.23.5 or above run:
 ```sh
-ddev add-on get ddev/ddev-memcached && ddev restart
+ddev add-on install richlawson/ddev-pinecone && ddev restart
 ```
 
 For earlier versions of DDEV run:
 
 ```sh
-ddev get ddev/ddev-memcached && ddev restart
+ddev add-on install richlawson/ddev-pinecone && ddev restart
 ```
 ## Explanation
 
