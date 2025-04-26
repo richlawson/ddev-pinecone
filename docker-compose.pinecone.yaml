@@ -1,23 +1,31 @@
-# DDEV-Local pinecone recipe file.
+# DDEV-Local Pinecone recipe file.
 #ddev-generated
 services:
   pinecone:
     image: ghcr.io/pinecone-io/pinecone-index:latest
-    container_name: ddev-${DDEV_SITENAME}-pinecone-index
+    container_name: ddev-${DDEV_SITENAME}-pinecone
     environment:
       PORT: 5081
       INDEX_TYPE: serverless
       VECTOR_TYPE: dense
       DIMENSION: 2
       METRIC: cosine
-    ports:
-      - "5081:5081"
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      VIRTUAL_HOST: ${DDEV_SITENAME}
+      # HTTP_EXPOSE exposes http traffic from the container port 5081
+      # to the host port 5081 vid ddev-router reverse proxy.
+      HTTP_EXPOSE: 5081:5081
+      HTTPS_EXPOSE: 5081:5081
+    expose:
+      - 5081
     platform: linux/amd64
     # These labels ensure this service is discoverable by ddev.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail -s localhost:5081/index/"]
     volumes:
     - ".:/mnt/ddev_config"
     - "ddev-global-cache:/mnt/ddev-global-cache"

@@ -14,7 +14,7 @@ ddev add-on install richlawson/ddev-pinecone && ddev restart
 For earlier versions of DDEV run:
 
 ```sh
-ddev add-on install richlawson/ddev-pinecone && ddev restart
+ddev get richlawson/ddev-pinecone && ddev restart
 ```
 ## Explanation
 
