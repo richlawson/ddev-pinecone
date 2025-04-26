@@ -5,7 +5,7 @@ services:
     image: ghcr.io/pinecone-io/pinecone-local:latest
     container_name: ddev-${DDEV_SITENAME}-pinecone
     environment:
-      PORT: 5080
+      PORT: 5080-5090
       PINECONE_HOST: $DDEV_HOSTNAME
       # This defines the host name the service should be accessible from. This
       # will be sitename.ddev.site.
