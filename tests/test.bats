@@ -47,10 +47,8 @@ health_checks() {
   # assert_output --partial "test_header"
 
   # Check that the index resturns its stats.
-  run curl -X POST "https://${PROJNAME}.ddev.site:5080/indexes" \
-    -H "Content-Type: application/json" \
+  run curl -i -X GET "https://${PROJNAME}.ddev.site:5080/indexes" \
     -H "X-Pinecone-API-Version: 2025-01" \
-    -d '{}'
   assert_success
   #assert_output --partial "dense"
 
