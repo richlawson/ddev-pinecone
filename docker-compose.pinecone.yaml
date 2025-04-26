@@ -6,7 +6,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-pinecone
     environment:
       PORT: 5081
-      PINECONE_HOST: ${DDEV_SITENAME}
+      PINECONE_HOST: $DDEV_HOSTNAME
       INDEX_TYPE: serverless
       VECTOR_TYPE: dense
       DIMENSION: 2
