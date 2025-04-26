@@ -72,7 +72,7 @@ health_checks() {
             },
             "deletion_protection": "disabled"
         }'
-  asset_success
+  assert_success
   assert_output --partial "dense"
 
   # Or check if some command gives expected output:
