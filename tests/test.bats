@@ -49,6 +49,7 @@ health_checks() {
     -H "Content-Type: application/json" \
     -H "X-Pinecone-API-Version: 2025-01" \
     -d '{}'
+  assert_output --partial "dense"
 
   # Or check if some command gives expected output:
   # DDEV_DEBUG=true run ddev launch
