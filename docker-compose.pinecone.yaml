@@ -10,12 +10,13 @@ services:
       # This defines the host name the service should be accessible from. This
       # will be sitename.ddev.site.
       VIRTUAL_HOST: $DDEV_HOSTNAME
-      HTTP_EXPOSE: "5080:5080,5081:5081"
-      HTTPS_EXPOSE: "5080:5080,5081:5081"
+      HTTP_EXPOSE: "5080:5080,5081:5081,5082:5082"
+      HTTPS_EXPOSE: "5080:5080,5081:5081,5082:5082"
     restart: "no"
     expose:
       - "5080"
       - "5081"
+      - "5082"
     platform: linux/amd64
     # These labels ensure this service is discoverable by ddev.
     labels:
